@@ -6,5 +6,5 @@ export const getEnv = (key: string, defaultValue?: string): string => {
       }
       return defaultValue;
     }
-    return value;
-  };
+  return value;
+};
