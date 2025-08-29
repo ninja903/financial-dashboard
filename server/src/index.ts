@@ -3,6 +3,9 @@ import express, { NextFunction, Request, Response } from "express"
 import { Env } from "./config/env.config"
 import cors from "cors"
 import { HTTPSTATUS } from "./config/http.config"
+import { errorHandler } from "./middlewares/errorHandler.middleware"
+import { BadRequestException } from "./utils/app-error"
+import connctDatabase from "./config/database.config"
 
 
 
@@ -18,14 +21,17 @@ app.use(
     })
 );
 
-app.get("/", (req: Request, res: Response, next:
-    NextFunction) => {
+app.get("/", (req: Request, res: Response, next: NextFunction) => {
+    throw new BadRequestException("this is test ")
     res.status(HTTPSTATUS.OK).json({
         message: "hello server is running"
     })
 });
 
-app.listen(Env.PORT, () => {
+app.use(errorHandler)
+
+app.listen(Env.PORT, async () => {
+      await connctDatabase();
   
     console.log(`Server is running on port ${Env.PORT} in ${Env.NODE_ENV} mode`);
     
