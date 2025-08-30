@@ -6,6 +6,7 @@ import { HTTPSTATUS } from "./config/http.config"
 import { errorHandler } from "./middlewares/errorHandler.middleware"
 import { BadRequestException } from "./utils/app-error"
 import connctDatabase from "./config/database.config"
+import authRoutes from "./routes/auth.route"
 
 
 
@@ -27,6 +28,8 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
         message: "hello server is running"
     })
 });
+
+app.use(`${BASE_PATH}/auth`, authRoutes);
 
 app.use(errorHandler)
 
