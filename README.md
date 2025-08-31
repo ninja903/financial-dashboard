@@ -3,25 +3,23 @@
 
 A comprehensive full-stack financial management SaaS platform built with the MERN stack, featuring AI-powered insights, real-time analytics, and advanced financial tools.
 
-## 🚀 Features
-
-### Core Functionality
-- **AI-Powered Financial Insights** - Intelligent analysis and recommendations
-- **Real-time Analytics Dashboard** - Live financial data visualization
-- **Expense Tracking** - Automated categorization and monitoring
-- **Budget Management** - Smart budgeting tools with AI suggestions
-- **Investment Portfolio Tracking** - Monitor and analyze investments
-- **Financial Goal Setting** - Set and track financial objectives
-- **Transaction Management** - Comprehensive transaction history and analysis
-
-### Advanced Features
-- **Multi-tenant Architecture** - Support for multiple organizations
-- **Role-based Access Control** - Granular permissions system
-- **API Integration** - Connect with banks and financial institutions
-- **Automated Reporting** - Generate financial reports automatically
-- **Mobile Responsive Design** - Optimized for all devices
-- **Real-time Notifications** - Instant alerts for important financial events
-
+🗝️ Key Features: 👇
+🔐 Authentication (Email + Password with JWT)
+🏢 Create & Edit Transactions
+📤 Upload & Scan Receipt with AI
+📈 Beautiful Advanced Analytics (MongoDB Aggregate Pipeline)
+📊 Expenses Breakdown Pie Chart
+📈 Income & Expense Line Chart
+📅 Filter by Date Ranges — like Last 30 Days etc.
+♻️ Recurring Transactions with Cron Job
+📄 Auto-Generated Monthly Report (Emailed to User)
+📥 CSV transaction Import
+🔍 Filter & Search
+📅 Pagination
+🗑️ Bulk Delete
+➕ Duplicate Transactions
+🧑‍💼 Upload Profile Photo (Cloudinary)
+🌐 Built with MERN Stack (Node.js, MongoDB, React, TypeScript)
 ## 🛠️ Technology Stack
 
 ### Frontend
@@ -378,32 +376,11 @@ git push heroku main
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-
-
-## 🙏 Acknowledgments
-
-- OpenAI for AI capabilities
-- MongoDB for database solutions
-- React community for excellent documentation
-- All contributors and supporters
-
 ## 📞 Support
 
 If you have any questions or need support:
 
 - 📧 Email: [try.rushabh@gmail.com](mailto:try.rushabh@gmail.com)
-
-
-## 🗺️ Roadmap
-
-- [ ] Mobile app development (React Native)
-- [ ] Advanced AI features (GPT-4 integration)
-- [ ] Cryptocurrency tracking
-- [ ] Multi-currency support
-- [ ] Advanced reporting and exports
-- [ ] API rate limiting and caching
-- [ ] WebSocket real-time updates
-- [ ] Advanced security features
 
 ---
 

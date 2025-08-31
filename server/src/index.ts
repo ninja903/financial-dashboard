@@ -11,6 +11,7 @@ import authRoutes from "./routes/auth.route"
 import passport from "passport"
 import userRoutes from "./routes/user.route"
 import { passportAuthenticateJwt } from "./config/passport.config"
+import transactionRoutes from "./routes/transaction.route";
 
 
 
@@ -37,6 +38,7 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
 
 app.use(`${BASE_PATH}/auth`, authRoutes);
 app.use(`${BASE_PATH}/user`, passportAuthenticateJwt, userRoutes);
+app.use(`${BASE_PATH}/transaction`, passportAuthenticateJwt, transactionRoutes);
 
 app.use(errorHandler)
 
