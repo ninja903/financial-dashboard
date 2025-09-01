@@ -31,23 +31,38 @@ A comprehensive full-stack financial management SaaS platform built with the MER
 - **GitHub Actions** - CI/CD pipeline
 - **MongoDB Atlas** - Cloud database
 - 
-- 🗝️ Key Features: 👇
-🔐 Authentication (Email + Password with JWT)
+🔐 Authentication: Email + Password with JWT
+
 🏢 Create & Edit Transactions
+
 📤 Upload & Scan Receipt with AI
-📈 Beautiful Advanced Analytics (MongoDB Aggregate Pipeline)
+
+📈 Advanced Analytics with MongoDB Aggregate Pipeline
+
 📊 Expenses Breakdown Pie Chart
+
 📈 Income & Expense Line Chart
-📅 Filter by Date Ranges — like Last 30 Days etc.
+
+📅 Filter by Date Ranges (e.g., Last 30 Days)
+
 ♻️ Recurring Transactions with Cron Job
-📄 Auto-Generated Monthly Report (Emailed to User)
-📥 CSV transaction Import
+
+📄 Auto-Generated Monthly Report (emailed to user)
+
+📥 CSV Transaction Import
+
 🔍 Filter & Search
+
 📅 Pagination
+
 🗑️ Bulk Delete
+
 ➕ Duplicate Transactions
+
 🧑‍💼 Upload Profile Photo (Cloudinary)
+
 🌐 Built with MERN Stack (Node.js, MongoDB, React, TypeScript)
+
 
 ## 📋 Prerequisites
 
