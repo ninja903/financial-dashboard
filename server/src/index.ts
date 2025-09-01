@@ -12,6 +12,7 @@ import passport from "passport"
 import userRoutes from "./routes/user.route"
 import { passportAuthenticateJwt } from "./config/passport.config"
 import transactionRoutes from "./routes/transaction.route";
+import { startJobs } from "./cron/scheduler"
 
 
 
@@ -35,6 +36,7 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
         message: "hello server is running"
     })
 });
+startJobs()
 
 app.use(`${BASE_PATH}/auth`, authRoutes);
 app.use(`${BASE_PATH}/user`, passportAuthenticateJwt, userRoutes);
