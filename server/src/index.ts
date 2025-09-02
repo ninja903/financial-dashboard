@@ -13,6 +13,7 @@ import userRoutes from "./routes/user.route"
 import { passportAuthenticateJwt } from "./config/passport.config"
 import transactionRoutes from "./routes/transaction.route";
 import { startJobs } from "./cron/scheduler"
+import { initializeCrons } from "./cron"
 
 
 
@@ -45,7 +46,12 @@ app.use(`${BASE_PATH}/transaction`, passportAuthenticateJwt, transactionRoutes);
 app.use(errorHandler)
 
 app.listen(Env.PORT, async () => {
-      await connctDatabase();
+    await connctDatabase();
+    
+    
+  if (Env.NODE_ENV === "development") {
+    await initializeCrons();
+  }
   
     console.log(`Server is running on port ${Env.PORT} in ${Env.NODE_ENV} mode`);
     
