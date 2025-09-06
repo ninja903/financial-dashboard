@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import { asyncHandler } from "../middlewares/asyncHandler.middlerware";
 import { HTTPSTATUS } from "../config/http.config";
 import {
-  generateReportService,
+    generateReportService,
   getAllReportsService,
   updateReportSettingService,
 } from "../services/report.service";

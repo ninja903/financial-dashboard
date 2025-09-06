@@ -14,6 +14,8 @@ import { passportAuthenticateJwt } from "./config/passport.config"
 import transactionRoutes from "./routes/transaction.route";
 import { startJobs } from "./cron/scheduler"
 import { initializeCrons } from "./cron"
+import reportRoutes from "./routes/report.route"
+import { calulateNextReportDate } from "./utils/helper"
 
 
 
@@ -37,11 +39,13 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
         message: "hello server is running"
     })
 });
-startJobs()
+
+
 
 app.use(`${BASE_PATH}/auth`, authRoutes);
 app.use(`${BASE_PATH}/user`, passportAuthenticateJwt, userRoutes);
 app.use(`${BASE_PATH}/transaction`, passportAuthenticateJwt, transactionRoutes);
+app.use(`${BASE_PATH}/report`, passportAuthenticateJwt, reportRoutes)
 
 app.use(errorHandler)
 
