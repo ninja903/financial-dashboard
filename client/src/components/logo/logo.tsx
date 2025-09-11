@@ -1,4 +1,4 @@
-import { PROTECTED_ROUTES } from "@/routes/common/routePath"
+import { PROTECTED_ROUTES } from "../../routes/common/routePath"
 import { GalleryVerticalEnd } from "lucide-react"
 import { Link } from "react-router-dom"
 

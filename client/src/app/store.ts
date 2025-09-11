@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import authReducer from "../features/auth/authSlice";
+import authReducer from "@/features/auth/authSlice";
 import storage from "redux-persist/lib/storage";
 import {
   persistReducer,
@@ -48,11 +48,11 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: reduxPersistActions, /// Ignore specific actions in serializable checks
+        ignoredActions: reduxPersistActions, 
       },
     }).concat(apiClient.middleware),
 });
 
-export const persistor = persistStore(store); // Create a persistor linked to the store
+export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;

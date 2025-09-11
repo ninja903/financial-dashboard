@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import {
   format,
@@ -7,14 +9,16 @@ import {
   startOfMonth,
   startOfYear,
   endOfDay,
+  endOfMonth,
+  endOfYear,
 } from "date-fns";
-import { Button } from "../../components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "../../components/ui/popover";
-import { cn } from "../../lib/utils";
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 import { ChevronDownIcon } from "lucide-react";
 
 export const DateRangeEnum = {
@@ -53,6 +57,7 @@ interface DateRangeSelectProps {
 const now = new Date();
 const today = endOfDay(now);
 
+// Presets for quick selection
 const presets: DateRangePreset[] = [
   {
     label: "Last 30 Days",
@@ -67,19 +72,22 @@ const presets: DateRangePreset[] = [
   {
     label: "Last Month",
     value: DateRangeEnum.LAST_MONTH,
-    getRange: () => ({
-      from: startOfMonth(subMonths(today, 1)),
-      to: startOfMonth(today),
-      value: DateRangeEnum.LAST_MONTH,
-      label: "for Last Month",
-    }),
+    getRange: () => {
+      const lastMonth = subMonths(today, 1);
+      return {
+        from: startOfMonth(lastMonth),
+        to: endOfMonth(lastMonth),
+        value: DateRangeEnum.LAST_MONTH,
+        label: "for Last Month",
+      };
+    },
   },
   {
     label: "Last 3 Months",
     value: DateRangeEnum.LAST_3_MONTHS,
     getRange: () => ({
-      from: startOfMonth(subMonths(today, 3)),
-      to: startOfMonth(today),
+      from: startOfMonth(subMonths(today, 2)),
+      to: today,
       value: DateRangeEnum.LAST_3_MONTHS,
       label: "for Past 3 Months",
     }),
@@ -87,12 +95,15 @@ const presets: DateRangePreset[] = [
   {
     label: "Last Year",
     value: DateRangeEnum.LAST_YEAR,
-    getRange: () => ({
-      from: startOfYear(subYears(today, 1)),
-      to: startOfYear(today),
-      value: DateRangeEnum.LAST_YEAR,
-      label: "for Past Year",
-    }),
+    getRange: () => {
+      const lastYear = subYears(today, 1);
+      return {
+        from: startOfYear(lastYear),
+        to: endOfYear(lastYear),
+        value: DateRangeEnum.LAST_YEAR,
+        label: "for Past Year",
+      };
+    },
   },
   {
     label: "This Month",
@@ -133,6 +144,7 @@ export const DateRangeSelect = ({
 }: DateRangeSelectProps) => {
   const [open, setOpen] = useState(false);
 
+  // Determine display text
   const displayText = dateRange
     ? presets.find((p) => p.value === dateRange.value)?.label ||
       (dateRange.from
@@ -142,19 +154,38 @@ export const DateRangeSelect = ({
         : "Select a duration")
     : "Select a duration";
 
-  // Set default range on initial render
+  // Set default range on mount
   useEffect(() => {
     if (!dateRange) {
       const defaultPreset = presets.find((p) => p.value === defaultRange);
       if (defaultPreset) {
-        // console.log(defaultPreset.getRange(),"defaultPreset.getRange()")
+        console.log("Setting default range:", defaultPreset.getRange());
         setDateRange(defaultPreset.getRange());
       }
     }
   }, [dateRange, defaultRange, setDateRange]);
 
+  // Handle preset click
+  const handlePresetClick = (preset: DateRangePreset) => {
+    const newRange = preset.getRange();
+    console.log("Preset selected:", preset.label, newRange);
+
+    // Always pass a new object to force state update
+    setDateRange({
+      from: newRange.from ? new Date(newRange.from) : null,
+      to: newRange.to ? new Date(newRange.to) : null,
+      value: newRange.value,
+      label: newRange.label,
+    });
+
+    setOpen(false);
+  };
+
   return (
-    <Popover open={open} onOpenChange={setOpen}>
+    <Popover open={open} onOpenChange={(val) => {
+      console.log("Popover open state:", val);
+      setOpen(val);
+    }}>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
@@ -178,10 +209,7 @@ export const DateRangeSelect = ({
                 "justify-start text-left",
                 dateRange?.value === preset.value && "bg-accent"
               )}
-              onClick={() => {
-                setDateRange(preset.getRange());
-                setOpen(false);
-              }}
+              onClick={() => handlePresetClick(preset)}
             >
               {preset.label}
             </Button>

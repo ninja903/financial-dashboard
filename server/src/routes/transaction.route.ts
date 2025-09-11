@@ -16,8 +16,9 @@ import { upload } from "../config/cloudinary.config";
 
 const transactionRoutes = Router();
 
-transactionRoutes.get("/:id", getTransactionByIdController);
 transactionRoutes.get("/all", getAllTransactionController);
+transactionRoutes.get("/:id", getTransactionByIdController);
+
 
 transactionRoutes.put("/duplicate/:id", duplicateTransactionController);
 transactionRoutes.put("/update/:id", updateTransactionController);

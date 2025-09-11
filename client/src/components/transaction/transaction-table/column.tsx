@@ -8,7 +8,7 @@ import {
   MoreHorizontal,
   Pencil,
   RefreshCw,
-  //StopCircleIcon,
+  StopCircleIcon,
   Trash2,
 } from "lucide-react";
 import { format } from "date-fns";
@@ -237,7 +237,7 @@ export const transactionColumns: ColumnDef<TransactionType>[] = [
 
 // eslint-disable-next-line react-refresh/only-export-components
 const ActionsCell = ({ row }: { row: any }) => {
-  //const isRecurring = row.original.isRecurring;
+  const isRecurring = row.original.isRecurring;
   const transactionId = row.original.id;
   const { onOpenDrawer } = useEditTransactionDrawer();
 
@@ -305,14 +305,12 @@ const ActionsCell = ({ row }: { row: any }) => {
           )}
         </DropdownMenuItem>
 
-        {/* {isRecurring && (
-          <>
-            <DropdownMenuItem>
-              <StopCircleIcon className="mr-1 h-4 w-4" />
-              Stop Recurring
-            </DropdownMenuItem>
-          </>
-        )} */}
+        {isRecurring && (
+          <DropdownMenuItem>
+            <StopCircleIcon className="mr-1 h-4 w-4" />
+            Stop Recurring
+          </DropdownMenuItem>
+        )}
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="relative !text-destructive"

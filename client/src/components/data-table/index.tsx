@@ -1,4 +1,4 @@
-
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from "react";
 import {
   ColumnDef,
@@ -135,7 +135,7 @@ export function DataTable<TData>({
   };
 
   const handleDelete = () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
     const selectedIds = selectedRows.map((row) => (row.original as any).id);
     onBulkDelete?.(selectedIds);
     setRowSelection({});

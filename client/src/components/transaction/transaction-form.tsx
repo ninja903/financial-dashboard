@@ -156,7 +156,7 @@ const TransactionForm = (props: {
 
   // Handle form submission
   const onSubmit = (values: FormValues) => {
-    // if (isCreating || isUpdating) return;
+    if (isCreating || isUpdating) return;
     console.log("Form submitted:", values);
     const payload = {
       title: values.title,
@@ -228,7 +228,7 @@ const TransactionForm = (props: {
                         shadow-sm border p-2 flex-1 justify-center 
                         `,
                         field.value === _TRANSACTION_TYPE.INCOME &&
-                          "!border-primary"
+                        "!border-primary"
                       )}
                     >
                       <RadioGroupItem
@@ -247,7 +247,7 @@ const TransactionForm = (props: {
                         shadow-sm border p-2 flex-1 justify-center 
                         `,
                         field.value === _TRANSACTION_TYPE.EXPENSE &&
-                          "!border-primary"
+                        "!border-primary"
                       )}
                     >
                       <RadioGroupItem
@@ -315,7 +315,7 @@ const TransactionForm = (props: {
                   <SingleSelector
                     value={
                       CATEGORIES.find((opt) => opt.value === field.value) ||
-                      field.value
+                        field.value
                         ? { value: field.value, label: field.value }
                         : undefined
                     }
@@ -341,13 +341,13 @@ const TransactionForm = (props: {
                     <PopoverTrigger asChild>
                       <FormControl>
                         <Button
-                          variant={"outline"}
+                          variant="outline"
                           className={cn(
                             "w-full pl-3 text-left font-normal",
                             !field.value && "text-muted-foreground"
                           )}
                         >
-                          {field.value ? (
+                          {field.value instanceof Date ? (
                             format(field.value, "PPP")
                           ) : (
                             <span>Pick a date</span>
@@ -357,15 +357,15 @@ const TransactionForm = (props: {
                       </FormControl>
                     </PopoverTrigger>
                     <PopoverContent
-                      className="w-auto p-0 !pointer-events-auto"
+                      className="w-auto p-0"
                       align="start"
                     >
                       <CalendarComponent
                         mode="single"
-                        selected={field.value}
+                        selected={field.value as Date | undefined}
                         onSelect={(date) => {
-                          console.log(date);
-                          field.onChange(date); // This updates the form value
+                          console.log("📅 Selected Date:", date);
+                          field.onChange(date);
                         }}
                         disabled={(date) => date < new Date("2023-01-01")}
                         initialFocus
@@ -376,6 +376,7 @@ const TransactionForm = (props: {
                 </FormItem>
               )}
             />
+
 
             {/* Payment Method */}
             <FormField
