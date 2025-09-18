@@ -1,19 +1,20 @@
+
 import { useState } from "react";
 import { z } from "zod";
 import { ChevronDown, ChevronLeft, FileCheck } from "lucide-react";
-import { Button } from "../../../components/ui/button";
-import { Progress } from "../../../components/ui/progress";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
 import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "../../../components/ui/dialog";
-import { _TRANSACTION_TYPE, PAYMENT_METHODS_ENUM } from "../../../constant";
+} from "@/components/ui/dialog";
+import { _TRANSACTION_TYPE, PAYMENT_METHODS_ENUM } from "@/constant";
 import { toast } from "sonner";
-import { MAX_IMPORT_LIMIT } from "../../../constant";
-import { BulkTransactionType } from "../../../features/transaction/transationType";
-import { useProgressLoader } from "../../../hooks/use-progress-loader";
-import { useBulkImportTransactionMutation } from "../../../features/transaction/transactionAPI";
+import { MAX_IMPORT_LIMIT } from "@/constant";
+import { BulkTransactionType } from "@/features/transaction/transationType";
+import { useProgressLoader } from "@/hooks/use-progress-loader";
+import { useBulkImportTransactionMutation } from "@/features/transaction/transactionAPI";
 
 type ConfirmationStepProps = {
   file: File | null;
