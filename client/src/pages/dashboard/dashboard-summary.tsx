@@ -7,8 +7,8 @@ const DashboardSummary = ({
   dateRange,
   setDateRange,
 }: {
-  dateRange?: DateRangeType;
-  setDateRange?: (range: DateRangeType) => void;
+  dateRange: DateRangeType;
+  setDateRange: (range: DateRangeType) => void;
 }) => {
   const { user } = useTypedSelector((state) => state.auth);
 

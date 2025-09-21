@@ -4,8 +4,8 @@ import AddTransactionDrawer from "@/components/transaction/add-transaction-drawe
 interface Props {
   title: string;
   subtitle: string;
-  dateRange?: DateRangeType;
-  setDateRange?: (range: DateRangeType) => void;
+  dateRange: DateRangeType; 
+  setDateRange: (range: DateRangeType) => void; 
 }
 
 const DashboardHeader = ({ title, subtitle, dateRange, setDateRange }: Props) => {
@@ -16,7 +16,10 @@ const DashboardHeader = ({ title, subtitle, dateRange, setDateRange }: Props) =>
         <p className="text-white/60 text-sm">{subtitle}</p>
       </div>
       <div className="flex justify-end gap-4 mb-6">
-      <DateRangeSelect dateRange={dateRange || null} setDateRange={(range) => setDateRange?.(range)} />
+        <DateRangeSelect
+          dateRange={dateRange}
+          setDateRange={setDateRange}
+        />
         <AddTransactionDrawer />
       </div>
     </div>
