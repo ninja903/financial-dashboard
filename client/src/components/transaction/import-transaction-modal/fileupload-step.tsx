@@ -1,19 +1,20 @@
+
 import { toast } from "sonner";
 import { usePapaParse } from "react-papaparse";
 import { FileUp } from "lucide-react";
-import { Button } from "../../../components/ui/button";
-import { Progress } from "../../../components/ui/progress";
+import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
 import { useRef } from "react";
 import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "../../../components/ui/dialog";
-import { MAX_FILE_SIZE, MAX_IMPORT_LIMIT } from "../../../constant";
-import { useProgressLoader } from "../../../hooks/use-progress-loader";
+} from "@/components/ui/dialog";
+import { MAX_FILE_SIZE, MAX_IMPORT_LIMIT } from "@/constant";
+import { useProgressLoader } from "@/hooks/use-progress-loader";
 
 interface CsvRow {
-  [key: string]: string | undefined; // Define that rows can be indexed with strings
+  [key: string]: string | undefined;
 }
 
 type FileUploadStepProps = {

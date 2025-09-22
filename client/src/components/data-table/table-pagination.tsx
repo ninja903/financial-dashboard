@@ -15,7 +15,7 @@ import {
 interface DataTablePaginationProps {
   pageNumber: number;
   pageSize: number;
-  totalCount: number; // Total rows from the API
+  totalCount: number; 
   totalPages: number;
   onPageChange?: (page: number) => void;
   onPageSizeChange?: (size: number) => void;

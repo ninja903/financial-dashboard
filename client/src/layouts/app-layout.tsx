@@ -1,6 +1,7 @@
-import Navbar from "../components/navbar";
+
+import Navbar from "@/components/navbar";
 import { Outlet } from "react-router-dom";
-import EditTransactionDrawer from "../components/transaction/edit-transaction-drawer";
+import EditTransactionDrawer from "@/components/transaction/edit-transaction-drawer";
 
 const AppLayout = () => {
   return (

@@ -7,12 +7,12 @@ import {
   FileSpreadsheet,
   HelpCircle,
 } from "lucide-react";
-import { Button } from "../../../components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   DialogHeader,
   DialogTitle,
   DialogDescription,
-} from "../../../components/ui/dialog";
+} from "@/components/ui/dialog";
 import {
   Table,
   TableBody,
@@ -20,15 +20,15 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../components/ui/table";
-import { CsvColumn, TransactionField } from "../../../@types/transaction.type";
+} from "@/components/ui/table";
+import { CsvColumn, TransactionField } from "@/@types/transaction.type";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../../../components/ui/select";
+} from "@/components/ui/select";
 
 type ColumnMappingStepProps = {
   csvColumns: CsvColumn[];
@@ -39,8 +39,8 @@ type ColumnMappingStepProps = {
 };
 
 type AvailableAttributeType =
-  | { fieldName: string; required?: never } // For the "Do not import" option
-  | TransactionField; // For the actual fields
+  | { fieldName: string; required?: never } 
+  | TransactionField; 
 
 const ColumnMappingStep = ({
   csvColumns,

@@ -17,9 +17,9 @@ import { encryptTransform } from 'redux-persist-transform-encrypt';
 type RootReducerType = ReturnType<typeof rootReducer>;
 
 const persistConfig = {
-  key: "root", // Key for the persisted data in storage
-  storage, // Storage engine to use (localStorage)
-  blacklist: [apiClient.reducerPath], // Specify which reducers not to persist (RTK Query cache)
+  key: "root", 
+  storage, 
+  blacklist: [apiClient.reducerPath],
   transforms: [
       encryptTransform({
         secretKey: import.meta.env.VITE_REDUX_PERSIST_SECRET_KEY!,
@@ -31,11 +31,10 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  [apiClient.reducerPath]: apiClient.reducer, // Add API client reducer to root reducer
-  auth: authReducer, // Add auth reducer to root reducer
+  [apiClient.reducerPath]: apiClient.reducer,
+  auth: authReducer, 
 });
 
-// Create a persisted version of the root reducer
 const persistedReducer = persistReducer<RootReducerType>(
   persistConfig,
   rootReducer

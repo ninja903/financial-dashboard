@@ -1,3 +1,4 @@
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   ArrowUpDown,
@@ -9,6 +10,7 @@ import {
   Pencil,
   RefreshCw,
   StopCircleIcon,
+  //StopCircleIcon,
   Trash2,
 } from "lucide-react";
 import { format } from "date-fns";
@@ -305,12 +307,14 @@ const ActionsCell = ({ row }: { row: any }) => {
           )}
         </DropdownMenuItem>
 
-        {isRecurring && (
-          <DropdownMenuItem>
-            <StopCircleIcon className="mr-1 h-4 w-4" />
-            Stop Recurring
-          </DropdownMenuItem>
-        )}
+         {isRecurring && (
+          <>
+            <DropdownMenuItem>
+              <StopCircleIcon className="mr-1 h-4 w-4" />
+              Stop Recurring
+            </DropdownMenuItem>
+          </>
+        )} 
         <DropdownMenuSeparator />
         <DropdownMenuItem
           className="relative !text-destructive"

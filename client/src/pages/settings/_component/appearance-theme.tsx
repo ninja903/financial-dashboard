@@ -1,8 +1,9 @@
+
 import { useState } from "react"
-import { Label } from "../../../components/ui/label"
-import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group"
-import { Button } from "../../../components/ui/button"
-import { useTheme } from "../../../context/theme-provider"
+import { Label } from "@/components/ui/label"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Button } from "@/components/ui/button"
+import { useTheme } from "@/context/theme-provider"
 
 export function AppearanceTheme() {
   const { theme, setTheme } = useTheme()
